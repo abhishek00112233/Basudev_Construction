@@ -27,10 +27,10 @@ const Home = () => {
                         <h1 className="text-hero">
                             Bihar's Best Construction Company<br /><span style={{ color: 'var(--primary)' }}>Basudev Construction</span>
                         </h1>
-                        <p style={{ fontSize: '1.25rem', maxWidth: '750px', margin: '0 auto 2.5rem', opacity: 0.9 }}>
+                        <p style={{ fontSize: '1rem', maxWidth: '750px', margin: '0 auto 1.5rem', opacity: 0.9, lineHeight: '1.5' }}>
                             Trusted supplier of Balu, Gitti, and Stone with reliable transport services. <br /><strong>Serving exclusively across Bihar.</strong>
                         </p>
-                        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                        <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center' }}>
                             <Link to="/order" className="btn btn-primary">Order Now</Link>
                             <Link to="/contact" className="btn btn-outline" style={{ borderColor: '#fff', color: '#fff' }}>Contact Us</Link>
                         </div>

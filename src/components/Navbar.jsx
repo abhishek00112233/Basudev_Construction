@@ -26,7 +26,7 @@ const Navbar = () => {
 
     return (
         <nav style={{ backgroundColor: '#212121', color: '#fff', position: 'sticky', top: 0, zIndex: 1000, boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
-            <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '80px' }}>
+            <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '64px' }}>
                 <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.5rem', fontWeight: 'bold', color: '#fff' }}>
                     <Truck color="var(--primary)" size={32} />
                     <span>Basudev <span style={{ color: 'var(--primary)' }}>Construction</span></span>

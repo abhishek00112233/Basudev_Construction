@@ -121,23 +121,26 @@ img {
 
 /* Typography Utilities */
 .text-hero {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 800;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   line-height: 1.1;
 }
 
 .text-h2-responsive {
-  font-size: 1.75rem;
-  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
 }
 
 @media (min-width: 768px) {
   .text-hero {
     font-size: 3.5rem;
+    margin-bottom: 1.5rem;
   }
+
   .text-h2-responsive {
     font-size: 2.5rem;
+    margin-bottom: 1rem;
   }
 }
 
