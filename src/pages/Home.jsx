@@ -24,13 +24,13 @@ const Home = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h1 style={{ fontSize: '3.5rem', fontWeight: '800', marginBottom: '1.5rem', lineHeight: '1.1' }}>
+                        <h1 className="text-hero">
                             Bihar's Best Construction Company<br /><span style={{ color: 'var(--primary)' }}>Basudev Construction</span>
                         </h1>
                         <p style={{ fontSize: '1.25rem', maxWidth: '750px', margin: '0 auto 2.5rem', opacity: 0.9 }}>
                             Trusted supplier of Balu, Gitti, and Stone with reliable transport services. <br /><strong>Serving exclusively across Bihar.</strong>
                         </p>
-                        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+                        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                             <Link to="/order" className="btn btn-primary">Order Now</Link>
                             <Link to="/contact" className="btn btn-outline" style={{ borderColor: '#fff', color: '#fff' }}>Contact Us</Link>
                         </div>
@@ -42,11 +42,11 @@ const Home = () => {
             <section className="section-padding" style={{ backgroundColor: '#fff' }}>
                 <div className="container">
                     <div className="text-center mb-8">
-                        <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Why Choose Basudev Construction?</h2>
+                        <h2 className="text-h2-responsive">Why Choose Basudev Construction?</h2>
                         <p style={{ color: '#6B7280' }}>We are Bihar's top choice for construction materials, delivering quality right to your site.</p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: '2rem' }}>
+                    <div className="grid grid-cols-1 grid-cols-3" style={{ gap: '2rem' }}>
                         {[
                             { title: 'Quality Materials', desc: 'Premium grade Balu, Gitti, and Stone for durable construction.', delay: 0 },
                             { title: 'Bihar Specific Service', desc: 'Specialized logistics and delivery network covering all districts of Bihar.', delay: 0.2 },
