@@ -5,8 +5,16 @@ import { materials } from '../data/materials';
 import { Send } from 'lucide-react';
 
 const Order = () => {
-    const { user } = useAuth();
+    const { user, loading: authLoading } = useAuth();
     const location = useLocation();
+
+    if (authLoading) {
+        return (
+            <div className="section-padding text-center">
+                <p>Loading...</p>
+            </div>
+        );
+    }
 
     if (!user) {
         return <Navigate to="/login" replace state={{ from: location }} />;
@@ -85,6 +93,9 @@ const Order = () => {
                 <div className="text-center mb-8">
                     <h1 style={{ marginBottom: '1rem' }}>Place an Order</h1>
                     <p style={{ color: '#6B7280' }}>Fill out the form below to request a delivery.</p>
+                    <div style={{ fontSize: '0.875rem', color: '#059669', marginBottom: '0.5rem', fontWeight: '500' }}>
+                        Logged in as: {user.email}
+                    </div>
                     <div style={{ marginTop: '1rem', padding: '0.75rem', backgroundColor: '#FFFBEB', color: '#D97706', borderRadius: '0.5rem', display: 'inline-block' }}>
                         <strong>Note:</strong> We currently provide delivery services exclusively within <strong>Bihar</strong>.
                     </div>

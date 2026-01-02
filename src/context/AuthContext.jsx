@@ -20,7 +20,6 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const login = async (email, password) => {
-        setLoading(true);
         try {
             const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
             const response = await fetch(`${API_URL}/api/auth/login`, {
@@ -39,11 +38,9 @@ export const AuthProvider = ({ children }) => {
 
             setUser(userData);
             localStorage.setItem('user', JSON.stringify(userData));
-            setLoading(false); // ensure loading is cleared after login
             return true;
         } catch (error) {
             console.error('Login Error:', error);
-            setLoading(false); // clear loading on error
             // Clear any stale user data to avoid auto‑redirect on failure
             setUser(null);
             localStorage.removeItem('user');
