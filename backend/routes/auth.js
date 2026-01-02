@@ -46,8 +46,8 @@ router.post('/send-otp', async (req, res) => {
         const mailOptions = {
             from: process.env.EMAIL_USER,
             to: email,
-            subject: 'Basudev Construction - Admin Registration OTP',
-            text: `Your OTP for Admin Registration is: ${otp}. It expires in 5 minutes.`
+            subject: 'Basudev Construction - Registration OTP',
+            text: `Your OTP for Registration is: ${otp}. It expires in 5 minutes.`
         };
 
         console.log(`------------------------------------------------`);
@@ -97,11 +97,11 @@ router.post('/register', async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, salt);
         console.log('Password hashed');
 
-        // Create new admin user
+        // Create new user (default to user)
         const newUser = new User({
             email,
             password: hashedPassword,
-            role: 'admin'
+            role: 'user' // Default to user
         });
 
         console.log('Saving user...');

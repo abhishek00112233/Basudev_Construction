@@ -10,13 +10,20 @@ const Login = () => {
 
     const { login, user } = useAuth();
     const navigate = useNavigate();
+    const location = useLocation();
 
-    // If already logged in, go straight to admin
+    // If already logged in, redirect based on role or previous location
     useEffect(() => {
         if (user) {
-            navigate('/admin');
+            if (user.role === 'admin') {
+                navigate('/admin');
+            } else {
+                // If there's a state with 'from', go there, else home
+                const from = location.state?.from?.pathname || '/';
+                navigate(from);
+            }
         }
-    }, [user, navigate]);
+    }, [user, navigate, location]);
 
     const handleReset = () => {
         if (window.confirm('This will clear all saved vehicle/material data. Are you sure?')) {
@@ -29,10 +36,8 @@ const Login = () => {
         e.preventDefault();
         setError('');
         const success = await login(email, password);
-        if (success) {
-            navigate('/admin');
-        } else {
-            setError('Wrong username');
+        if (!success) {
+            setError('Invalid email or password');
         }
     };
 
@@ -43,9 +48,9 @@ const Login = () => {
                     <div style={{ display: 'inline-flex', padding: '0.75rem', backgroundColor: '#FEF3C7', borderRadius: '50%', marginBottom: '1rem' }}>
                         <Lock size={24} color="#D97706" />
                     </div>
-                    <h2>Admin Login</h2>
+                    <h2>Welcome Back</h2>
                     <p style={{ color: '#6B7280' }}>
-                        Sign in to manage your construction business
+                        Sign in to account
                     </p>
                 </div>
 
@@ -63,7 +68,7 @@ const Login = () => {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             style={{ width: '100%', padding: '0.75rem', borderRadius: '0.375rem', border: '1px solid #D1D5DB' }}
-                            placeholder="admin@example.com"
+                            placeholder="you@example.com"
                             required
                         />
                     </div>
@@ -88,12 +93,19 @@ const Login = () => {
                         Sign In
                     </button>
                 </form>
+
                 <div style={{ marginTop: '1.5rem', textAlign: 'center' }}>
+                    <p style={{ color: '#4B5563', fontSize: '0.875rem' }}>
+                        Don't have an account? <Link to="/signup" style={{ color: '#D97706', fontWeight: '500' }}>Sign up</Link>
+                    </p>
+                </div>
+
+                <div style={{ marginTop: '1.5rem', textAlign: 'center', borderTop: '1px solid #eee', paddingTop: '1rem' }}>
                     <button
                         onClick={handleReset}
                         style={{ background: 'none', border: 'none', color: '#9CA3AF', fontSize: '0.75rem', textDecoration: 'underline', cursor: 'pointer' }}
                     >
-                        Reset Application Data (Fix Blank Page)
+                        Reset Application Data (Troubleshoot)
                     </button>
                 </div>
             </div>

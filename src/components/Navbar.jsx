@@ -7,7 +7,7 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const location = useLocation();
 
-    const { user } = useAuth();
+    const { user, logout } = useAuth();
     const navLinks = [
         { name: 'Home', path: '/' },
         { name: 'Vehicles', path: '/vehicles' },
@@ -18,7 +18,9 @@ const Navbar = () => {
 
     if (user?.role === 'admin') {
         navLinks.push({ name: 'Admin', path: '/admin' });
-    } else {
+    }
+
+    if (!user) {
         navLinks.push({ name: 'Login', path: '/login' });
     }
 
@@ -33,7 +35,7 @@ const Navbar = () => {
                 </Link>
 
                 {/* Desktop Menu */}
-                <ul style={{ display: 'flex', gap: '2rem' }} className="hidden-mobile">
+                <ul style={{ display: 'flex', gap: '2rem', alignItems: 'center' }} className="hidden-mobile">
                     {navLinks.map((link) => (
                         <li key={link.name}>
                             <Link to={link.path} style={{ color: isActive(link.path) ? '#FFC107' : '#e5e7eb', fontWeight: isActive(link.path) ? 'bold' : '500' }}>
@@ -41,6 +43,24 @@ const Navbar = () => {
                             </Link>
                         </li>
                     ))}
+                    {user && (
+                        <li>
+                            <button
+                                onClick={logout}
+                                style={{
+                                    background: 'none',
+                                    border: '1px solid #EF4444',
+                                    color: '#EF4444',
+                                    padding: '0.25rem 0.75rem',
+                                    borderRadius: '0.25rem',
+                                    cursor: 'pointer',
+                                    fontSize: '0.9rem'
+                                }}
+                            >
+                                Logout
+                            </button>
+                        </li>
+                    )}
                 </ul>
 
                 {/* Mobile Toggle */}
@@ -64,6 +84,28 @@ const Navbar = () => {
                                 </Link>
                             </li>
                         ))}
+                        {user && (
+                            <li>
+                                <button
+                                    onClick={() => {
+                                        logout();
+                                        setIsOpen(false);
+                                    }}
+                                    style={{
+                                        width: '100%',
+                                        textAlign: 'left',
+                                        padding: '0.5rem',
+                                        background: 'rgba(239, 68, 68, 0.1)',
+                                        border: 'none',
+                                        color: '#EF4444',
+                                        borderRadius: '4px',
+                                        cursor: 'pointer'
+                                    }}
+                                >
+                                    Logout
+                                </button>
+                            </li>
+                        )}
                     </ul>
                 </div>
             )}

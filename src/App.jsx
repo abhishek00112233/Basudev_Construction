@@ -6,6 +6,7 @@ import Materials from './pages/Materials';
 import Order from './pages/Order';
 import Contact from './pages/Contact';
 import Login from './pages/Login';
+import Signup from './pages/Signup';
 import AdminDashboard from './pages/AdminDashboard';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { DataProvider } from './context/DataContext';
@@ -32,6 +33,7 @@ function App() {
               <Route path="order" element={<Order />} />
               <Route path="contact" element={<Contact />} />
               <Route path="login" element={<Login />} />
+              <Route path="signup" element={<Signup />} />
               <Route path="admin" element={
                 <PrivateRoute>
                   <AdminDashboard />
