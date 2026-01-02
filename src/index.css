@@ -172,7 +172,7 @@ img {
 
 /* Responsive Visibility */
 .hidden-mobile {
-  display: none;
+  display: none !important;
 }
 
 .hidden-desktop {
