@@ -96,7 +96,7 @@ const Login = () => {
 
                 <div style={{ marginTop: '1.5rem', textAlign: 'center' }}>
                     <p style={{ color: '#4B5563', fontSize: '0.875rem' }}>
-                        Don't have an account? <Link to="/signup" style={{ color: '#D97706', fontWeight: '500' }}>Sign up</Link>
+                        Don't have an account? <Link to="/signup" state={{ from: location.state?.from }} style={{ color: '#D97706', fontWeight: '500' }}>Sign up</Link>
                     </p>
                 </div>
 

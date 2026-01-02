@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { UserPlus, Mail, Lock, ArrowRight, CheckCircle } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
@@ -14,6 +14,7 @@ const Signup = () => {
     const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
+    const location = useLocation();
     const { login } = useAuth(); // We can use login to auto-login after signup if we want, or just redirect
 
     const handleSendOtp = async (e) => {
@@ -74,7 +75,10 @@ const Signup = () => {
 
             // Auto login
             await login(email, password);
-            navigate('/'); // Redirect to home or previous page
+
+            // Redirect to previous page (e.g. Order) or home
+            const from = location.state?.from?.pathname || '/';
+            navigate(from);
 
         } catch (err) {
             setError(err.message);
