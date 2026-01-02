@@ -71,35 +71,56 @@ const Navbar = () => {
 
             {/* Mobile Menu */}
             {isOpen && (
-                <div style={{ backgroundColor: '#2d2d2d', padding: '1rem', borderTop: '1px solid #444' }} className="hidden-desktop">
-                    <ul style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <div style={{
+                    backgroundColor: '#212121',
+                    position: 'absolute',
+                    top: '64px',
+                    left: 0,
+                    right: 0,
+                    height: 'calc(100vh - 64px)',
+                    padding: '2rem',
+                    borderTop: '1px solid #333',
+                    zIndex: 999
+                }} className="hidden-desktop">
+                    <ul style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', alignItems: 'center' }}>
                         {navLinks.map((link) => (
-                            <li key={link.name}>
+                            <li key={link.name} style={{ width: '100%', textAlign: 'center' }}>
                                 <Link
                                     to={link.path}
                                     onClick={() => setIsOpen(false)}
-                                    style={{ display: 'block', padding: '0.5rem', color: isActive(link.path) ? '#FFC107' : '#fff', borderRadius: '4px', backgroundColor: isActive(link.path) ? 'rgba(255, 193, 7, 0.1)' : 'transparent' }}
+                                    style={{
+                                        display: 'block',
+                                        padding: '0.75rem',
+                                        color: '#FFC107', // Always yellow as requested
+                                        fontSize: '1.25rem',
+                                        fontWeight: isActive(link.path) ? 'bold' : '500',
+                                        borderRadius: '0.5rem',
+                                        backgroundColor: isActive(link.path) ? 'rgba(255, 193, 7, 0.1)' : 'transparent',
+                                        border: isActive(link.path) ? '1px solid rgba(255, 193, 7, 0.2)' : 'none'
+                                    }}
                                 >
                                     {link.name}
                                 </Link>
                             </li>
                         ))}
                         {user && (
-                            <li>
+                            <li style={{ width: '100%', textAlign: 'center' }}>
                                 <button
                                     onClick={() => {
                                         logout();
                                         setIsOpen(false);
                                     }}
                                     style={{
+                                        display: 'block',
                                         width: '100%',
-                                        textAlign: 'left',
-                                        padding: '0.5rem',
-                                        background: 'rgba(239, 68, 68, 0.1)',
-                                        border: 'none',
+                                        padding: '0.75rem',
+                                        background: 'transparent',
+                                        border: '1px solid #EF4444',
                                         color: '#EF4444',
-                                        borderRadius: '4px',
-                                        cursor: 'pointer'
+                                        fontSize: '1.25rem',
+                                        borderRadius: '0.5rem',
+                                        cursor: 'pointer',
+                                        fontWeight: '500'
                                     }}
                                 >
                                     Logout
